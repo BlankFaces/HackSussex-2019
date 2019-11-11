@@ -49,15 +49,7 @@ public class InputField : MonoBehaviour
             start.WaitForExit();
             UnityEngine.Debug.Log(output);
 
-            if (output == "1")
-            {
-                invlaid.SetActive(false);
-                valid.SetActive(true);
-                StartCoroutine(LoadNextScene());
-
-            }
-
-            else if (output == "2")
+            if (output == "2")
             {
                 // Set text to say file was deleted after downloading
                 valid.SetActive(false);
@@ -76,6 +68,18 @@ public class InputField : MonoBehaviour
                 // Set text to say invalid URL
                 valid.SetActive(false);
                 invlaid.SetActive(true);
+            }
+
+            else
+            {
+                UnityEngine.Debug.Log(1);
+                GameObject go = GameObject.Find("A u d i o  L i s t e n e r");
+                FrequencyReader AudioThing = go.GetComponent<FrequencyReader>();
+                UnityEngine.Debug.Log(2);
+                AudioThing.song = output;
+                invlaid.SetActive(false);
+                valid.SetActive(true);
+                StartCoroutine(LoadNextScene());
             }
         }
 

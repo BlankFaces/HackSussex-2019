@@ -5,14 +5,13 @@ import re
 import os
 
 url = sys.argv[1]
-file_path = "%s/song.mp3" % sys.argv[2]
 
-if os.path.isfile(file_path):
-    os.remove(file_path)
-
-is_valid_url = re.findall(r'https:\/\/.*\.bandcamp\.com\/track\/.*', url)
+is_valid_url = re.findall(r'https:\/\/(.*)\.bandcamp\.com\/track\/(.*)', url)
 
 if len(is_valid_url) is not 0:
+    file_name = "%s_%s" % (is_valid_url[0][0], is_valid_url[0][1])
+    file_path = "%s/%s.mp3" % (sys.argv[2], file_name)
+
     req = requests.get(url)
     
     if req.status_code == 200:
@@ -31,7 +30,7 @@ if len(is_valid_url) is not 0:
                 
 
             if os.path.isfile(file_path):
-                sys.stdout.write(str(1)) # Success
+                sys.stdout.write(str(file_name)) # the filename
             else:
                 sys.stdout.write(str(2)) # File deleted when made
         else:
