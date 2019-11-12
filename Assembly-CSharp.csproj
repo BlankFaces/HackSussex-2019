@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\BlockManipulator.cs" />
     <Compile Include="Assets\Scripts\FrequencyReader.cs" />
+    <Compile Include="Assets\Scripts\GetSetSong.cs" />
     <Compile Include="Assets\Scripts\InputField.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>D:/Projects/HackSussex-2019/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

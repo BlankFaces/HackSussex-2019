@@ -10,7 +10,7 @@ public class FrequencyReader : MonoBehaviour
 {
     AudioSource audioSource;
     public AudioClip clippywippyuwu;
-    public string song;
+    string song;
 
     public static float[] samples = new float[8192]; //8192
 
@@ -21,6 +21,11 @@ public class FrequencyReader : MonoBehaviour
         //audioSource = GetComponent<AudioSource>();
         //audioSource.clip = clippywippyuwu;
         //audioSource.Play();
+
+        GameObject go = GameObject.Find("Song Holder");
+        GetSetSong AudioThing = go.GetComponent<GetSetSong>();
+        song = AudioThing.GetSong();
+
         UnityEngine.Debug.Log(song);
         audioSource = GetComponent<AudioSource>();
         audioSource.PlayOneShot((AudioClip)Resources.Load(song));

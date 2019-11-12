@@ -73,10 +73,10 @@ public class InputField : MonoBehaviour
             else
             {
                 UnityEngine.Debug.Log(1);
-                GameObject go = GameObject.Find("A u d i o  L i s t e n e r");
-                FrequencyReader AudioThing = go.GetComponent<FrequencyReader>();
+                GameObject go = GameObject.Find("Song Holder");
+                GetSetSong AudioThing = go.GetComponent<GetSetSong>();
+                AudioThing.setSong(output);
                 UnityEngine.Debug.Log(2);
-                AudioThing.song = output;
                 invlaid.SetActive(false);
                 valid.SetActive(true);
                 StartCoroutine(LoadNextScene());
@@ -92,7 +92,7 @@ public class InputField : MonoBehaviour
 
     public IEnumerator LoadNextScene()
     {
-        yield return new WaitForSeconds(8f);
+        yield return new WaitForSeconds(10f);
        SceneManager.LoadScene("Light");
    }
 }
